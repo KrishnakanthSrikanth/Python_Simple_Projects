@@ -1,0 +1,109 @@
+SHOW --> Displays info in DB 
+Eg: Show Databases
+SHOW TABLES--> Displays tables in DB
+SHOW COLUMNS --> Displays info about columns in DB
+---------------------------------------SELECT --> Used to select a particular column/data from a table in DB
+SELECT DISTINT --> Used to remove duplicate records
+SELECT * --> Fetches all details from table
+---------------------------------------
+LIMIT --> Used to fetch data within specified limit
+Eg: Select column_name from table limit 3 --> Fetches first 3 records from specified column_name
+Select column_name from table limit 3,4 --> Fetches 4 records from column_name starting from 3rd value (ie column value starts from 0)
+---------------------------------------
+Fully Qualified Name --> Syntax: table_name.column_name
+---------------------------------------
+ORDER BY --> Sorts data as specified. It can be based on column_name, desc. By default, ORDER BY sorts in ascending order.
+When using with two columns, it sorts as per first listed column name and if both entries in first specified column has same values, then it sorts as per second specified column name.
+Eg: Select * from table order by column_name1, column_name2
+---------------------------------------
+WHERE --> Used to extract records which satisfies the specified condition
+Syntax: select * from table where condition;
+Also, we can use Comparison and Logical operators with WHERE clause.
+---------------------------------------
+CONCAT --> Used to concatenate two or more text values and returns concatenated string.
+Syntax: SELECT CONCAT(column_name1, ', ' , column_name2) FROM table;
+Also, the above function can be used to create new column using "AS" keyword.
+Syntax: SELECT CONCAT(column_name1, ', ' , column_name2) AS new_column_name  FROM table;
+---------------------------------------
+UPPER --> Converts string to Uppercase
+LOWER --> Converts string to Lowercase
+Syntax: Select column_name1,UPPER(column_name) AS new_column from table;
+SQRT --> Returns sq. root of given value in argument (ie column_name)
+Syntax: Select column_name, SQRT(column_name) from table;
+AVG --> Returns avg value of numeric column
+Syntax: Select AVG(column_name) from table;
+SUM --> Used to calculate sum of all values in the specfied column
+Syntax: Select SUM(column_name) from table;
+---------------------------------------
+SubQuery --> Query within a query. Must be enclosed in a parantheses and no semi-colon at the end of query passed inside parantheses.
+---------------------------------------
+LIKE --> Used with WHERE clause and used as a search condition.
+Syntax : Select * from table WHERE column_name LIKE '%s' --> Returns values which contains last letter "s" in the column name specified.
+MIN --> Returns min value of an expression in SELECT statement.
+---------------------------------------
+INNER JOIN --> Returns intersection of both tables using "ON" function like WHERE clause.
+LEFT JOIN --> Returns values present in table name specified in left side.
+Syntax: Select table1.column1, table2.column2 from table1 LEFT OUTER JOIN table2 ON table1.column_name = table2.column_name; --> Returns all the rows from the left table (table1) and matching data from the right table (table2). If no match, NULL is returned.
+RIGHT JOIN --> Returns values present in table name specified in right side.
+Syntax: Select table1.column1, table2.column2 from table1 RIGHT OUTER JOIN table2 ON table1.column_name = table2.column_name; --> Returns all the rows from the right table (table2) even if no match in left table (table1). If no match, NULL is returned.
+---------------------------------------
+UNION --> Combines multiple datasets into one excluding duplicates
+UNION ALL --> Combines multiple datasets into one, without eliminating duplicates
+---------------------------------------
+INSERT INTO --> Inserts new rows into table
+Syntax: Insert Into table (column1, column2,...) values (value1,value2,...)
+value1, value2 are the values which have to inserted as per column order in table specified.
+---------------------------------------
+UPDATE --> Used to alter data in table
+Syntax: Update table SET column1 = value1, column2 = value2, ...
+WHERE condition;
+If WHERE is omitted, all records will be updated.
+DELETE --> Used to delete records from table permanently.
+Syntax: Delete table WHERE condition;
+If WHERE is omitted, all records will be deleted from table permanently.
+---------------------------------------
+CREATE TABLE --> Used to create a new table
+Syntax: CREATE TABLE table_name
+(
+column_name data_type,
+column_name1 data_type(size),
+column_name2 data_type(size),
+column_name3 data_type(size),
+....
+columnN data_type(size)
+PRIMARY KEY(column_name)
+);
+
+where, size --> Max length of table's column
+data_type --> What type of data (Eg: int, varchar for characters)
+---------------------------------------
+NOT NULL --> Indicates that a column cannot contain any NULL value.
+UNIQUE --> Does not allow to insert a duplicate value in a column. The UNIQUE constraint maintains the uniqueness of a column in a table. More than one UNIQUE column can be used in a table.
+PRIMARY KEY --> Enforces the table to accept unique data for a specific column and this constraint create a unique index for accessing the table faster.
+CHECK --> Determines whether the value is valid or not from a logical expression.
+DEFAULT --> While inserting data into a table, if no value is supplied to a column, then the column gets the value set as DEFAULT.
+AUTO_INCREMENT --> Used to generate unique number when a new record is inserted into a table.
+Eg: Create table table_name
+(
+column_name data_type NOT NULL AUTO_INCREMENT,
+column_name1 data_type NOT NULL, ....
+)
+ALTER TABLE --> Used to add, delete, or modify columns in an existing table
+To ADD:
+Syntax: ALTER TABLE table_name ADD column_name data_type;
+By default, values will be NULL.
+To DROP: Deletes permanently
+Syntax: ALTER TABLE table_name DROP COLUMN column_name;
+To DROP table:
+Syntax: DROP TABLE table_name;
+To RENAME:
+Syntax: ALTER TABLE tabe_name
+CHANGE column_name new_name varchar(100);
+To RENAME table:
+RENAME TABLE table_name TO new_name;
+---------------------------------------
+CREATE VIEW --> Creates a view as new table
+Syntax: CREATE VIEW name AS
+SELECT column1, column2 FROM table
+WHERE condition;
+
